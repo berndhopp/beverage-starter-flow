@@ -188,7 +188,7 @@
                     <plugin>
                         <groupId>com.vaadin</groupId>
                         <artifactId>flow-maven-plugin</artifactId>
-                        <version>0.0.5</version>
+                        <version>0.0.7-dx1</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -197,6 +197,7 @@
                                 </goals>
                                 <configuration>
                                     <transpileOutputDirectory>${transpilation.output}</transpileOutputDirectory>
+                                    <skipEs5>true</skipEs5>
                                 </configuration>
                             </execution>
                         </executions>
