@@ -15,8 +15,6 @@
  */
 package com.vaadin.starter.beveragebuddy.ui;
 
-import java.util.List;
-
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -37,6 +35,8 @@ import com.vaadin.starter.beveragebuddy.ui.ReviewsList.ReviewsModel;
 import com.vaadin.starter.beveragebuddy.ui.converters.LocalDateToStringConverter;
 import com.vaadin.starter.beveragebuddy.ui.converters.LongToStringConverter;
 
+import java.util.List;
+
 /**
  * Displays the list of available categories, with a search filter as well as
  * buttons to add a new category or edit existing ones.
@@ -56,6 +56,8 @@ public class ReviewsList extends PolymerTemplate<ReviewsModel> {
         void setReviews(List<Review> reviews);
     }
 
+    @Id("geoloc")
+    private GeoLocation geoLocation;
     @Id("search")
     private TextField search;
     @Id("newReview")
