@@ -64,6 +64,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.ilay</groupId>
+            <artifactId>ilay-navigation</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
         </dependency>

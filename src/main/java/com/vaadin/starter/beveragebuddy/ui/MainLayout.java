@@ -15,6 +15,9 @@
  */
 package com.vaadin.starter.beveragebuddy.ui;
 
+import com.vaadin.flow.component.ComponentUtil;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.Div;
@@ -28,8 +31,11 @@ import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.InitialPageSettings;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.server.PageConfigurator;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.starter.beveragebuddy.ui.views.categorieslist.CategoriesList;
 import com.vaadin.starter.beveragebuddy.ui.views.reviewslist.ReviewsList;
+
+import org.ilay.PermissionsChangedEvent;
 
 /**
  * The main layout contains the header with the navigation buttons, and the
@@ -58,7 +64,23 @@ public class MainLayout extends Div
         Div navigation = new Div(reviews, categories);
         navigation.addClassName("main-layout__nav");
 
-        Div header = new Div(title, navigation);
+        Button loginButton = new Button(
+            "login",
+            e -> {
+                if("login".equals(e.getSource().getText())){
+                    VaadinSession.getCurrent().setAttribute("user_is_logged_in", Boolean.TRUE);
+                    e.getSource().setText("logout");
+                } else {
+                    VaadinSession.getCurrent().setAttribute("user_is_logged_in", Boolean.FALSE);
+                    e.getSource().setText("login");
+                }
+
+                //always fire this event when permissions have changed
+                ComponentUtil.fireEvent(UI.getCurrent(), new PermissionsChangedEvent());
+            }
+        );
+
+        Div header = new Div(title, navigation, loginButton);
         header.addClassName("main-layout__header");
         add(header);
 

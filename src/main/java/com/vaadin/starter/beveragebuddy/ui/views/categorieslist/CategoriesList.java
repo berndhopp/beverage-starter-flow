@@ -36,12 +36,14 @@ import com.vaadin.starter.beveragebuddy.backend.CategoryService;
 import com.vaadin.starter.beveragebuddy.backend.Review;
 import com.vaadin.starter.beveragebuddy.backend.ReviewService;
 import com.vaadin.starter.beveragebuddy.ui.MainLayout;
+import com.vaadin.starter.beveragebuddy.ui.auth.LoginRequired;
 import com.vaadin.starter.beveragebuddy.ui.common.AbstractEditorDialog;
 
 /**
  * Displays the list of available categories, with a search filter as well as
  * buttons to add a new category or edit existing ones.
  */
+@LoginRequired
 @Route(value = "categories", layout = MainLayout.class)
 @PageTitle("Categories List")
 public class CategoriesList extends VerticalLayout {
